@@ -1,0 +1,40 @@
+These SQL/SQL++ queries can be run on the source MySQL databases and the destination AsterixDB dataverse to verify the "correctness" of the data cleaning system.
+
+
+SYNTHETIC DATA
+-- ACCOUNT TABLE --
+SQL: SELECT * FROM `account` WHERE `last_transaction` LIKE '%1900-01-01%';
+SQL++: USE cleanixingest; SELECT * FROM account WHERE account.last_transaction LIKE "%1900-01-01%";
+
+SQL: SELECT * FROM `account` WHERE `cc_expire` NOT LIKE '%/%';
+SQL++: USE cleanixingest; SELECT * FROM account WHERE account.cc_expire NOT LIKE "%/%";
+
+SQL: SELECT * FROM `account` WHERE cc_ccv = 'abc';
+SQL++: USE cleanixingest; SELECT * FROM account WHERE account.cc_ccv = "abc";
+
+-- BALANCE TABLE --
+SQL: SELECT * FROM `balance` WHERE currency < 25.0;
+SQL++: USE cleanixingest; SELECT * FROM balance WHERE balance.currency < 25.0;
+
+-- CUSTOMERS TABLE --
+SQL: SELECT * FROM `customers` WHERE employer = '';
+SQL++: USE cleanixingest; SELECT * FROM customers WHERE customers.employer = "";
+
+# This set of queries shows why rule definition is important; some misses are expected here.
+SQL: SELECT * FROM `customers` WHERE `phone_number` LIKE '%x%';
+SQL++: USE cleanixingest; SELECT * FROM customers WHERE customers.phone_number LIKE "%x%";
+
+BORDER CROSSING DATA
+Same queries for each source MySQL database (border_data and border_data2)
+-- BORDER TABLE --
+SQL: SELECT * FROM `border` WHERE PortName = '';
+SQL++: USE cleanixingest; SELECT * FROM border WHERE border.PortName = "";
+
+SQL: SELECT * FROM `border` WHERE PortCode < 100;
+SQL++: USE cleanixingest; SELECT * FROM border WHERE border.PortCode < 100;
+
+SQL: SELECT * FROM `border` WHERE `Date` LIKE '%1919%';
+SQL++: USE cleanixingest; SELECT * FROM border WHERE border.Date LIKE "%1919%";
+
+SQL: SELECT * FROM `border` WHERE `Measurement` = 9999999;
+SQL++: USE cleanixingest; SELECT * FROM border WHERE border.Measurement = "9999999";

@@ -1,0 +1,1 @@
+SELECT * FROM border LIMIT N INTO OUTFILE '/var/lib/mysql-files/out.csv' FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';

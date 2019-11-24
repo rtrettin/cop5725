@@ -1,0 +1,20 @@
+{
+  "name": "cop-socket",
+  "version": "1.0.0",
+  "description": "COP5725 socket server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rt14",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "mysql2": "latest",
+    "socket.io": "latest",
+    "winston": "^2.2.0"
+  },
+  "private": true,
+  "bin": {
+    "cop5725": "./server.js"
+  }
+}

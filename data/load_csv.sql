@@ -1,0 +1,1 @@
+LOAD DATA LOCAL INFILE 'border.csv' INTO TABLE border FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' (PortName,State,PortCode,Border,Date,Measure,Measurement,Location);

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cleanix - DB Connection</title>
+    <link rel="icon" type="image/png" href="favicon.ico" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jumbotron-narrow.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="index.html">Home</a></li>
+            <li role="presentation" class="active"><a href="connect.html">DB Connection</a></li>
+            <li role="presentation"><a href="settings.html">Clean Settings</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Cleanix</h3>
+      </div>
+      <div class="row marketing">
+        <div class="col-lg-12">
+		  <div id="connect_error"></div>
+          <p>Set the connection information here for the AsterixDB Cluster Controller, AsterixDB Node Controllers, and MySQL data import sources.</p>
+          <h4>AsterixDB (Hyracks) Connection Details</h4>
+          <form>
+            <div class="form-group">
+              <label>Cluster Controller IP:</label>
+              <input id="ccip" type="text" class="form-control" placeholder="127.0.0.1" />
+            </div>
+            <div class="form-group">
+              <label>Cluster Controller Port:</label>
+              <input id="ccp" type="number" class="form-control" min="1025" max="65535" value="19002" />
+            </div>
+            <div class="form-group">
+              <label>Node Controller Name #1:</label>
+              <input id="ncn1" type="text" class="form-control" value="asterix_nc1" />
+            </div>
+            <div class="form-group">
+              <label>Node Controller Name #2:</label>
+              <input id="ncn2" type="text" class="form-control" value="asterix_nc2" />
+            </div>
+            <button type="submit" class="btn btn-success" id="connect_hyracks">Save</button>
+          </form>
+          <hr />
+          <h4>Set the connection information here for 2 MySQL databases to import dirty data from.</h4>
+          <form>
+            <div class="form-group">
+              <label>MySQL Server IP:</label>
+              <input id="sql1ip" type="text" class="form-control" placeholder="127.0.0.1" />
+            </div>
+            <div class="form-group">
+              <label>MySQL Username:</label>
+              <input id="sql1user" type="text" class="form-control" placeholder="user" />
+            </div>
+            <div class="form-group">
+              <label>MySQL Password:</label>
+              <input id="sql1pw" type="password" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label>MySQL Database Name:</label>
+              <input id="sql1db" type="text" class="form-control" placeholder="database1" />
+            </div>
+            <button id="sql1" type="submit" class="btn btn-success">Save</button>
+          </form>
+          <br /><br />
+          <form>
+            <div class="form-group">
+              <label>MySQL Server IP:</label>
+              <input id="sql2ip" type="text" class="form-control" placeholder="127.0.0.1" />
+            </div>
+            <div class="form-group">
+              <label>MySQL Username:</label>
+              <input id="sql2user" type="text" class="form-control" placeholder="user" />
+            </div>
+            <div class="form-group">
+              <label>MySQL Password:</label>
+              <input id="sql2pw" type="password" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label>MySQL Database Name:</label>
+              <input id="sql2db" type="text" class="form-control" placeholder="database2" />
+            </div>
+            <button id="sql2" type="submit" class="btn btn-success">Save</button>
+          </form>
+        </div>
+      </div>
+      <footer class="footer">
+        <p>COP5725 Project</p>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/io.js"></script>
+  </body>
+</html>
