@@ -19,42 +19,44 @@ Directory Structure
 - web
 	- user interface for database connection details and rule definitions
 
-Demo
-URL: https://crustycrab.proxcp.com
+Demo URL: https://crustycrab.proxcp.com
 
 The project demo was run on a 3 server cluster:
-	- Server 1: web interface, websocket server, Cleanix, MySQL sources, AsterixDB server 1
-	- Server 2: AsterixDB server 2
-	- Server 3: AsterixDB server 3
+
+- Server 1: web interface, websocket server, Cleanix, MySQL sources, AsterixDB server 1
+- Server 2: AsterixDB server 2
+- Server 3: AsterixDB server 3
+
 Each server was an Ubuntu VM with 2 CPU cores, 2GB RAM, and 50GB HDD storage.
 
 The demo showed how the Cleanix system works with synthetic dirty data and real world dirty data. Both data sets had 33% and 30% of the data dirtied, respectively.
 
 Metrics used to measure effectiveness of the Cleanix system:
-	- Number of empty values after cleaning vs before cleaning
-	- Number of abnormal value detection rules hit before cleaning vs after cleaning 1 pass
+- Number of empty values after cleaning vs before cleaning
+- Number of abnormal value detection rules hit before cleaning vs after cleaning 1 pass
 
 Data cleanliness is mostly subjective to the user and depends on the data set and types of analytics being performed.
 
 How To Run
 This implementation requires at least 1 Linux server with various components:
-	- AsterixDB
-		- Installation documentation: https://asterixdb.apache.org/docs/0.9.4.1/ncservice.html#Small_cluster
-		- How to configure: place asterixdb/cc.conf in opt/local/conf/
-		- How to run: place asterixdb/startcc.sh onto the server and execute it
-	- MySQL
-		- Required to store the source data set(s)
-	- Python 3
-		- Only required if using the provided synthetic data generator script
-		- How to install prerequisites: python -m pip install -r requirements.txt
-	- NodeJS v10.x
-		- How to install prerequisites: a) cd to the directory with the package.json file then b) run "npm install"
-		- How to run: node server.js
-	- Java
-		- The jar file can be built using the included src files and pom.xml with the Maven build "clean install" command
-		- Run the jar file in java/target/ with: java -jar cop5725-1.0.0-jar-with-dependencies.jar
-	- Web server
-		- Place all files in the web/ directory in your web server directory to use the web interface
+- AsterixDB
+	- Installation documentation: https://asterixdb.apache.org/docs/0.9.4.1/ncservice.html#Small_cluster
+	- How to configure: place asterixdb/cc.conf in opt/local/conf/
+	- How to run: place asterixdb/startcc.sh onto the server and execute it
+- MySQL
+	- Required to store the source data set(s)
+- Python 3
+	- Only required if using the provided synthetic data generator script
+	- How to install prerequisites: python -m pip install -r requirements.txt
+- NodeJS v10.x
+	- How to install prerequisites: a) cd to the directory with the package.json file then b) run "npm install"
+	- How to run: node server.js
+- Java
+	- The jar file can be built using the included src files and pom.xml with the Maven build "clean install" command
+	- Run the jar file in java/target/ with: java -jar cop5725-1.0.0-jar-with-dependencies.jar
+- Web server
+	- Place all files in the web/ directory in your web server directory to use the web interface
+
 Once all components are installed and running correctly, the Java application and the Web interface should be able to connect to the NodeJS websocket server.
 
 The Cleanix system is used with the provided web interface. First use the "DB Connection" tab to input the details for the AsterixDB cluster and MySQL source databases. Ensure the "Save" buttons are clicked after each form is completed. Then go to the "Clean Settings" tab to define the data cleaning rules for each input data source. Again ensure the save buttons are clicked after each form is completed.
