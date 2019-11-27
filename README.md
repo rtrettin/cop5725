@@ -29,7 +29,7 @@ The project demo was run on a 3 server cluster:
 
 Each server was an Ubuntu VM with 2 CPU cores, 2GB RAM, and 50GB HDD storage.
 
-The demo showed how the Cleanix system works with synthetic dirty data and real world dirty data. Both data sets had 33% and 30% of the data dirtied, respectively.
+The demo showed how the Cleanix system works with synthetic dirty data and real world dirty data. Both data sets had 20% and 28% of the data dirtied, respectively.
 
 Metrics used to measure effectiveness of the Cleanix system:
 - Number of empty values after cleaning vs before cleaning
